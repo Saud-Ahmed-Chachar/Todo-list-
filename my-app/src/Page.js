@@ -1,57 +1,56 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import './App.css';
 
- const Page = () => {
-    const [title, settitle] = useState("")
-    const [desc, setdesc] = useState("")
-    const [mainTask, setMainTask] = useState([])
+const App = () => {
+ const [title, settitle] = useState('');
+ const [desc, setdesc] = useState('');
+ const [mainTask, setmainTask] = useState([]);
 
-    const submitHanler = (e) =>
-    {
-        e.preventDefault()
-        setMainTask ([...mainTask , {title , desc}])
-        // console.log(title)
-        // console.log(desc)
-        console.log(mainTask)
-        setdesc("")
-        settitle("")
-        
-    }
-    let renderTask = <h5>No task available</h5>;
-    if(renderTask.length>0)
-    {
-    renderTask = mainTask.map((task, index) => {
-        return (
-            <li key={index}>
-                <div className='tasks'>
-                    <h5>{task.title}</h5>
-                    <h6>{task.desc}</h6>
-                </div>
-            </li>
-        );
-    });
-}
-  return (
-    <>
-   <h1>This is My to do list</h1>
-   <form onSubmit={submitHanler}>
-    <input type='text' placeholder='please enter title' value={title} onChange={(e)=>{
-        settitle(e.target.value)
-    }}>
-    </input>   
-    <input type='text' placeholder='please enter description' value={desc} onChange={(e)=>{
-        setdesc(e.target.value)}}>
-    </input>
-  
+ const addTask = () => {
+    const newTask = { title, desc };
+    setmainTask([...mainTask, newTask]);
+    setdesc('');
+    settitle('');
+ };
 
-   <button>Add task</button>
-   </form>
-   <hr />
-   <div>
-    <h2>Tasks list</h2>
-    <ul>{renderTask}</ul>
-   </div>
-   </>
-   
-  )
-}
-export default Page;
+ const deleteTask = (index) => {
+    let tasks = [...mainTask];
+    tasks.splice(index, 1);
+    setmainTask(tasks);
+ };
+
+ let renderTask = mainTask.map((task, index) => {
+    return (
+      <li key={index}>
+        <div className='tasks'>
+          <h5>{task.title}</h5>
+          <h6>{task.desc}</h6>
+          <button onClick={() => deleteTask(index)}>Delete</button>
+        </div>
+      </li>
+    );
+ });
+
+ return (
+    <div className='App'>
+      <div className='input-container'>
+        <input
+          type='text'
+          placeholder='Enter title' required
+          value={title}
+          onChange={(e) => settitle(e.target.value)}
+        />
+        <input
+          type='text'
+          placeholder='Enter description' required
+          value={desc}
+          onChange={(e) => setdesc(e.target.value)}
+        />
+        <button className='AddBtn' onClick={addTask}>Add Task</button>
+      </div>
+      <ul>{renderTask}</ul>
+    </div>
+ );
+};
+
+export default App;

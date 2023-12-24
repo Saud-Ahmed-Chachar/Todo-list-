@@ -1,86 +1,69 @@
-/* CSS Reset */
-* {
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-
-/* Base Styles */
-body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
+.App {
+  max-width: 600px;
+  margin: 50px auto;
   background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
-h1, h2, h3{
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.AddBtn {
+  background-color: #4caf50;
   color: #fff;
-  background-color: #000;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-h1 { 
-  font-size: 2.5em; 
-text-align: center;
-padding: 0.4em;
-}
-h2 { font-size: 2em; 
-text-align: center;}
-h3 { font-size: 1.5em; }
-h4 { font-size: 1.25em; }
-h5 { font-size: 1em; }
-h6 { font-size: 0.875em; }
-
-a {
-  color: #333;
-  text-decoration: none;
+.AddBtn:hover {
+  background-color: #45a049;
 }
 
-a:hover {
-  color: #000;
-}
-
-/* Links */
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
-/* Clearfix */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
+.tasks {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
 }
 
-/* Responsive Image */
-img {
-  max-width: 100%;
-  height: auto;
-}
-input {
-  padding: 0.2em;
-  margin: 2em;
-  width: 22.2em;
-  float: left; /* Change this line */
-  border: solid 2px #000;
-  border-radius: .2em;
- }
-
- button{
-  padding: 0.2em;
-  margin: 2em;
-  width: 5.2em;
-  border: solid 2px #000;
-  border-radius: .2em;
- }
-
- .tasks {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 2em;
+button {
+  background-color: #f44336;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-
-
+button:hover {
+  background-color: #d32f2f;
+}
+.header{
+  text-align: center;
+}
